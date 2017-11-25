@@ -2,7 +2,10 @@ package sample;
 
 public class Stack {
     private int[] numberStack;
-    private int topOfStack;
+    /**
+     * Pointer that points to the element that is considered the top of the stack.
+     */
+    private int topOfStack = -1;
 
     public Stack(int size) {
         numberStack = new int[size];
@@ -14,7 +17,29 @@ public class Stack {
      * @param element The element to be pushed.
      */
     public void push(int element) {
+        topOfStack++;
+        numberStack[topOfStack] = element;
+    }
 
+    /**
+     * Push with the ability to replace the top of the stack with the inputted element.
+     *
+     * @param element The element that will be pushed/replace top of the stack.
+     */
+    public void push(int element, boolean replaceTop) {
+        // If it should not be replaced, do an ordinary push
+        if (!replaceTop) {
+            push(element);
+            return;
+        }
+
+        // On an uninitialized stack the topOfStack is set to -1, since the stack is empty.
+        if (topOfStack >= 0) {
+            numberStack[topOfStack] = element;
+        } else {
+            // Do an ordinary push. The stack is empty.
+            push(element);
+        }
     }
 
     /**
@@ -42,6 +67,7 @@ public class Stack {
     /**
      * Removes the object at the top of this stack and returns that object as the value of this function. The removed
      * item is replaced with entered parameter.
+     *
      * @param itemToReplaceWith The item to replace the removed item.
      * @return The object at the top of the stack.
      */
@@ -57,6 +83,12 @@ public class Stack {
      */
     @Override
     public String toString() {
-        return super.toString();
+        StringBuilder output = new StringBuilder();
+        for (int i : numberStack) {
+            output.append("\n").append(i).append(",");
+        }
+        output.append(" ");
+
+        return output.toString();
     }
 }
