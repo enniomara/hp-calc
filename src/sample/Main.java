@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Scanner;
+
 public class Main extends Application {
 
     @Override
@@ -14,6 +16,14 @@ public class Main extends Application {
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
+        HPCalculator hpCalculator = new HPCalculator();
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            Double[] e = hpCalculator.processInput(scanner.next());
+            for (Double g : e) {
+                System.out.println(g);
+            }
+        }
     }
 
 
