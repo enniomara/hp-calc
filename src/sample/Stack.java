@@ -56,24 +56,17 @@ public class Stack {
 
     /**
      * Removes the object at the top of this stack and returns that object as the value of this function. The removed
-     * item is replaced with 0.
+     * item is replaced with the value of the item at the bottom of the stack.
      *
      * @return The object at the top of this stack.
      */
     public int pop() {
-        return pop(0);
-    }
-
-    /**
-     * Removes the object at the top of this stack and returns that object as the value of this function. The removed
-     * item is replaced with entered parameter.
-     *
-     * @param itemToReplaceWith The item to replace the removed item.
-     * @return The object at the top of the stack.
-     */
-    public int pop(int itemToReplaceWith) {
         int numberToReturn = numberStack[topOfStack];
-        numberStack[topOfStack] = itemToReplaceWith;
+        /* Here we set the bottom of the stack to the item before. Due to the way the stack is implemented, the bottom
+            of it is always one step to the right of topOfStack. The % division is to take care of the case when
+            we exceed the array when doing topOfStack + 1. */
+        numberStack[topOfStack] = numberStack[(topOfStack + 1) % numberStack.length];
+
         topOfStack--;
         return numberToReturn;
     }
