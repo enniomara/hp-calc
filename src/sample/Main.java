@@ -19,9 +19,13 @@ public class Main extends Application {
         HPCalculator hpCalculator = new HPCalculator();
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            Double[] e = hpCalculator.processInput(scanner.next());
-            for (Double g : e) {
-                System.out.println(g);
+            try {
+                Double[] e = hpCalculator.processInput(scanner.next());
+                for (Double g : e) {
+                    System.out.println(g);
+                }
+            }catch (Error e){
+                System.out.println(e.getMessage());
             }
         }
     }

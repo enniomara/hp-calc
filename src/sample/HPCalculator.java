@@ -8,6 +8,11 @@ public class HPCalculator {
         values = new HPValues();
     }
 
+    /**
+     * Process for the input.
+     * @param input The input as an string.
+     * @return The new array.
+     */
     public Double[] processInput(String input){
         Double value = tryParseDouble(input);
         if(value == null){
@@ -18,6 +23,11 @@ public class HPCalculator {
         }
     }
 
+    /**
+     * Trying to parse the string to a double, if not the we know it´s a operation or something els.
+     * @param input The input we are trying to parse to double.
+     * @return An double or null if it´s an operation or something els.
+     */
     private Double tryParseDouble(String input){
         try {
             return Double.parseDouble(input);
@@ -26,6 +36,10 @@ public class HPCalculator {
         }
     }
 
+    /**
+     * Precess for operation input.
+     * @param input The operation input.
+     */
     private void processOperation(String input){
         switch (input){
             case "+":
@@ -39,6 +53,9 @@ public class HPCalculator {
                 break;
             case "/":
                 values.push(Operations.DIVIDES.calculate(values.pop(), values.pop()));
+                break;
+            case "CLEARSTACK":
+                values.empty();
                 break;
             default:
                 throw new Error("Finns ej");

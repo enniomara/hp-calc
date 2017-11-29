@@ -1,5 +1,7 @@
 package sample;
 
+import java.util.Arrays;
+
 public class  HPValues{
 
     private Double[] values;
@@ -42,6 +44,11 @@ public class  HPValues{
 
     public Double peek(){
         return values[0];
+    }
+
+    public Double[] empty(){
+        values = new Double[]{0.0, 0.0, 0.0, 0.0};
+        return values;
     }
 }
 
