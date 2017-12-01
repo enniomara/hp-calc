@@ -14,9 +14,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root, 300, 500));
         primaryStage.show();
-        HPCalculator hpCalculator = new HPCalculator();
+        /*HPCalculator hpCalculator = new HPCalculator();
         Scanner scanner = new Scanner(System.in);
         while (true) {
             try {
@@ -27,7 +27,7 @@ public class Main extends Application {
             }catch (Error e){
                 System.out.println(e.getMessage());
             }
-        }
+        }*/
     }
 
 

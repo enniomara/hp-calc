@@ -1,15 +1,7 @@
 package sample;
 
 public enum Operations {
-    PLUS,
-    MINUS,
-    TIMES,
-    DIVIDES,
-    ENTER,
-    CLEAR,
-    CHS,
-    CLEARSTACK;
-
+    PLUS, MINUS, TIMES, DIVIDES, CLEAR, CHS, CLEARSTACK;
     double calculate(double x, double y){
         switch (this) {
             case PLUS:

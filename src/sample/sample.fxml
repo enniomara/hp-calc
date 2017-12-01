@@ -1,8 +1,128 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<GridPane fx:controller="sample.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-</GridPane>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="300.0" styleClass="achor-pane" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutY="14.0" prefHeight="150.0" prefWidth="300.0" styleClass="pane-up" stylesheets="@../stylesheet.css">
+         <children>
+            <TextField id="textField_4" disable="true" editable="false" layoutY="1.0" prefHeight="27.0" prefWidth="300.0" styleClass="text-field" stylesheets="@../stylesheet.css" />
+            <TextField id="textField_3" disable="true" editable="false" layoutY="42.0" prefHeight="27.0" prefWidth="300.0" styleClass="text-field" stylesheets="@../stylesheet.css" />
+            <TextField id="textField_2" disable="true" editable="false" layoutY="84.0" prefHeight="27.0" prefWidth="300.0" styleClass="text-field" stylesheets="@../stylesheet.css" />
+            <TextField id="textField_1" disable="true" editable="false" layoutY="123.0" prefHeight="27.0" prefWidth="300.0" styleClass="text-field" stylesheets="@../stylesheet.css" />
+         </children>
+      </Pane>
+      <Pane layoutY="200.0" prefHeight="300.0" prefWidth="300.0" styleClass="pane-down" stylesheets="@../stylesheet.css">
+         <children>
+            <Button id="button_dot" layoutY="250.0" mnemonicParsing="false" stylesheets="@../stylesheet.css" text="." textAlignment="CENTER">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button id="button_0" layoutX="50.0" layoutY="250.0" mnemonicParsing="false" stylesheets="@../stylesheet.css" text="0" textAlignment="CENTER">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button id="button_Enter" layoutX="100.0" layoutY="250.0" mnemonicParsing="false" stylesheets="@../stylesheet.css" text="=" textAlignment="CENTER">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button id="button_Minus" layoutX="150.0" layoutY="250.0" mnemonicParsing="false" stylesheets="@../stylesheet.css" text="-" textAlignment="CENTER">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button id="button_1" layoutY="200.0" mnemonicParsing="false" stylesheets="@../stylesheet.css" text="1" textAlignment="CENTER">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button id="button_2" layoutX="50.0" layoutY="200.0" mnemonicParsing="false" stylesheets="@../stylesheet.css" text="2" textAlignment="CENTER">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button id="button_3" layoutX="100.0" layoutY="200.0" mnemonicParsing="false" stylesheets="@../stylesheet.css" text="3" textAlignment="CENTER">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button id="button_Plus" layoutX="150.0" layoutY="200.0" mnemonicParsing="false" stylesheets="@../stylesheet.css" text="+" textAlignment="CENTER">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button id="button_4" layoutY="150.0" mnemonicParsing="false" stylesheets="@../stylesheet.css" text="4" textAlignment="CENTER">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button id="button_5" layoutX="50.0" layoutY="150.0" mnemonicParsing="false" stylesheets="@../stylesheet.css" text="5" textAlignment="CENTER">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button id="button_1" layoutX="100.0" layoutY="150.0" mnemonicParsing="false" stylesheets="@../stylesheet.css" text="6" textAlignment="CENTER">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button id="button_Times" layoutX="150.0" layoutY="150.0" mnemonicParsing="false" stylesheets="@../stylesheet.css" text="*" textAlignment="CENTER">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button id="button_7" layoutY="100.0" mnemonicParsing="false" stylesheets="@../stylesheet.css" text="7" textAlignment="CENTER">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button id="button_8" layoutX="50.0" layoutY="100.0" mnemonicParsing="false" stylesheets="@../stylesheet.css" text="8" textAlignment="CENTER">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button id="button_9" layoutX="100.0" layoutY="100.0" mnemonicParsing="false" stylesheets="@../stylesheet.css" text="9" textAlignment="CENTER">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button id="button_Devide" layoutX="150.0" layoutY="100.0" mnemonicParsing="false" stylesheets="@../stylesheet.css" text="/" textAlignment="CENTER">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button id="button_CHS" layoutY="50.0" mnemonicParsing="false" stylesheets="@../stylesheet.css" text="CHS" textAlignment="CENTER">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button id="button_Clear" layoutX="50.0" layoutY="50.0" mnemonicParsing="false" stylesheets="@../stylesheet.css" text="CE" textAlignment="CENTER">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button id="button_ClearStack" layoutX="100.0" layoutY="50.0" mnemonicParsing="false" stylesheets="@../stylesheet.css" text="CA" textAlignment="CENTER">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button layoutX="150.0" layoutY="50.0" mnemonicParsing="false" stylesheets="@../stylesheet.css" textAlignment="CENTER">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+         </children>
+         <opaqueInsets>
+            <Insets top="100.0" />
+         </opaqueInsets>
+      </Pane>
+   </children>
+</AnchorPane>

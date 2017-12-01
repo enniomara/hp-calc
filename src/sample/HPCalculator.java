@@ -57,6 +57,8 @@ public class HPCalculator {
             case "CLEARSTACK":
                 values.empty();
                 break;
+            case "CHS":
+                break;
             default:
                 throw new Error("Finns ej");
         }

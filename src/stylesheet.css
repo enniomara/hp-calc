@@ -1,0 +1,33 @@
+.button{
+    -fx-background-color: #434343;
+    -fx-text-fill: #fff;
+    -fx-background-radius: 0px;
+    -fx-pref-width: 50px;
+    -fx-pref-height: 50px;
+}
+
+@keyframes test {
+    from{ -fx-background-color: red }
+    to{ -fx-background-color: white }
+}
+
+.button:pressed{
+    -fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;
+    -fx-background-radius: 3px;
+    -fx-background-insets: 0px;
+
+}
+
+.achor-pane{
+    -fx-padding: 0px;
+    -fx-pref-width: 300px;
+    -fx-pref-height: 500px;
+    -fx-background-color: #333333;
+}
+
+.text-field{
+    -fx-opacity: 0.95;
+    -fx-background-insets: 0;
+    -fx-background-color: transparent, white, transparent, white;
+    -fx-background-radius: 0;
+}
