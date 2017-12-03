@@ -2,7 +2,9 @@ package hpcalculator;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 
 public class Controller {
@@ -47,25 +49,38 @@ public class Controller {
         String input = "";
         if(event.getSource() instanceof Button) input = ((Button) event.getSource()).getText();
         Double[] values;
-        if(input.equals("ENTER")){
-            values = hpCalculator.processInput(textField_1.getText());
-        } else if(input.equals("CLX")) {
-            values = hpCalculator.processInput("0.0");
-        }else {
-            values = hpCalculator.processInput(input);
+        try {
+            if (input.equals("ENTER")) {
+                values = hpCalculator.processInput(textField_1.getText());
+                updateBoard(values, true);
+            } else if (input.equals("CLX")) {
+                values = hpCalculator.processInput("0.0");
+                updateBoard(values, false);
+            } else {
+                values = hpCalculator.processInput(input);
+                updateBoard(values, false);
+            }
+            pushedValue = true;
+        } catch (Error e){
+            new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).showAndWait();
         }
-        pushedValue = true;
-        updateBoard(values);
     }
 
     /**
      * Update text fields.
      * @param values The new values.
      */
-    private void updateBoard(Double[] values){
-        textField_1.setText(String.valueOf(values[0]));
-        textField_2.setText(String.valueOf(values[1]));
-        textField_3.setText(String.valueOf(values[2]));
-        textField_4.setText(String.valueOf(values[3]));
+    private void updateBoard(Double[] values, boolean enter){
+        if(enter){
+            textField_1.setText(String.valueOf(values[0]));
+            textField_2.setText(String.valueOf(values[0]));
+            textField_3.setText(String.valueOf(values[1]));
+            textField_4.setText(String.valueOf(values[2]));
+        } else {
+            textField_1.setText(String.valueOf(values[0]));
+            textField_2.setText(String.valueOf(values[1]));
+            textField_3.setText(String.valueOf(values[2]));
+            textField_4.setText(String.valueOf(values[3]));
+        }
     }
 }

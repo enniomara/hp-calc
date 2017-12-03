@@ -60,10 +60,8 @@ public class HPCalculator {
             case "CHS":
                 values.push(-values.pop());
                 break;
-            case "CLX":
-                break;
             default:
-                throw new Error("Finns ej");
+                throw new Error("Operation not existing");
         }
     }
 

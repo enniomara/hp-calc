@@ -1,7 +1,7 @@
 package hpcalculator;
 
 public enum Operations {
-    PLUS, MINUS, TIMES, DIVIDES, CLEAR, CHS, CLEARSTACK;
+    PLUS, MINUS, TIMES, DIVIDES;
     double calculate(double x, double y){
         switch (this) {
             case PLUS:

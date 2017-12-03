@@ -15,18 +15,6 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);
         primaryStage.show();
-        /*HPCalculator hpCalculator = new HPCalculator();
-        Scanner scanner = new Scanner(System.in);
-        while (true) {
-            try {
-                Double[] e = hpCalculator.processInput(scanner.next());
-                for (Double g : e) {
-                    System.out.println(g);
-                }
-            }catch (Error e){
-                System.out.println(e.getMessage());
-            }
-        }*/
     }
 
 
