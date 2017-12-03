@@ -52,14 +52,15 @@ public class Controller {
         try {
             if (input.equals("ENTER")) {
                 values = hpCalculator.processInput(textField_1.getText());
-                updateBoard(values, true);
             } else if (input.equals("CLX")) {
                 values = hpCalculator.processInput("0.0");
-                updateBoard(values, false);
             } else {
+                if(!pushedValue){
+                    hpCalculator.processInput(textField_1.getText());
+                }
                 values = hpCalculator.processInput(input);
-                updateBoard(values, false);
             }
+            updateBoard(values);
             pushedValue = true;
         } catch (Error e){
             new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).showAndWait();
@@ -70,17 +71,10 @@ public class Controller {
      * Update text fields.
      * @param values The new values.
      */
-    private void updateBoard(Double[] values, boolean enter){
-        if(enter){
-            textField_1.setText(String.valueOf(values[0]));
-            textField_2.setText(String.valueOf(values[0]));
-            textField_3.setText(String.valueOf(values[1]));
-            textField_4.setText(String.valueOf(values[2]));
-        } else {
-            textField_1.setText(String.valueOf(values[0]));
-            textField_2.setText(String.valueOf(values[1]));
-            textField_3.setText(String.valueOf(values[2]));
-            textField_4.setText(String.valueOf(values[3]));
-        }
+    private void updateBoard(Double[] values){
+        textField_1.setText(String.valueOf(values[0]));
+        textField_2.setText(String.valueOf(values[1]));
+        textField_3.setText(String.valueOf(values[2]));
+        textField_4.setText(String.valueOf(values[3]));
     }
 }
