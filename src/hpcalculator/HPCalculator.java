@@ -54,10 +54,13 @@ public class HPCalculator {
             case "/":
                 values.push(Operations.DIVIDES.calculate(values.pop(), values.pop()));
                 break;
-            case "CLEARSTACK":
+            case "CSTK":
                 values.empty();
                 break;
             case "CHS":
+                values.push(-values.pop());
+                break;
+            case "CLX":
                 break;
             default:
                 throw new Error("Finns ej");

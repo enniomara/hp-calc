@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("hp-calculator.fxml"));
         primaryStage.setTitle("HP-Calculator");
-        primaryStage.setScene(new Scene(root, 300, 500));
+        primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);
         primaryStage.show();
         /*HPCalculator hpCalculator = new HPCalculator();

@@ -4,11 +4,11 @@
     -fx-background-radius: 0px;
     -fx-pref-width: 75px;
     -fx-pref-height: 75px;
+    -fx-font-size: 24px;
 }
 
-@keyframes test {
-    from{ -fx-background-color: red }
-    to{ -fx-background-color: white }
+.buttonOpe{
+    -fx-font-size: 16px;
 }
 
 .button:pressed{
@@ -18,13 +18,14 @@
 
 }
 
-.achor-pane{
+AnchorPane{
     -fx-padding: 0px;
     -fx-pref-width: 300px;
     -fx-pref-height: 500px;
 }
 
 .text-field{
+    -fx-font-size: 24px;
     -fx-pref-height: 43px;
     -fx-opacity: 1;
     -fx-background-insets: 0;
