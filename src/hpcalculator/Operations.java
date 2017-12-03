@@ -1,4 +1,4 @@
-package sample;
+package hpcalculator;
 
 public enum Operations {
     PLUS, MINUS, TIMES, DIVIDES, CLEAR, CHS, CLEARSTACK;

@@ -1,6 +1,4 @@
-package sample;
-
-import java.util.Arrays;
+package hpcalculator;
 
 public class  HPValues{
 

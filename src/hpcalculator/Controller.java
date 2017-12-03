@@ -1,4 +1,4 @@
-package sample;
+package hpcalculator;
 
 public class Controller {
 
