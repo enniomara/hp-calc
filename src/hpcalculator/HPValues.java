@@ -72,34 +72,3 @@ public class  HPValues{
         return values;
     }
 }
-
-/*public class HPValues extends Vector<Double>{
-
-    public Double push(Double value){
-        if(size() >= 4){
-            removeElementAt(0);
-        }
-        addElement(value);
-        return value;
-    }
-
-    public Double pop(){
-        Double returnValue = peek();
-        int length = size();
-        if(length < 4) {
-            removeElementAt(length - 1);
-        }else {
-
-        }
-        return returnValue;
-    }
-
-    public Double peek(){
-        int length = size();
-        return elementAt(length-1);
-    }
-
-    private void reOrder(){
-
-    }
-}*/
