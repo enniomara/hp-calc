@@ -3,6 +3,7 @@ package hpcalculator;
 public class HPCalculator {
 
     private HPValues values;
+    private int times;
 
     public HPCalculator(){
         values = new HPValues();
@@ -13,12 +14,16 @@ public class HPCalculator {
      * @param input The input as an string.
      * @return The new array.
      */
-    public Double[] processInput(String input){
+    public Double[] processInput(String input, boolean enter){
         Double value = tryParseDouble(input);
         if(value == null){
             processOperation(input);
+            times = 0;
             return values.getValues();
         }else {
+            if(times > 0 && !values.peek().equals(value)) values.pop();
+            if(enter) values.push(value);
+            times++;
             return values.push(value);
         }
     }

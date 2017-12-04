@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 
+import java.util.Arrays;
+
 public class Controller {
 
     private HPCalculator hpCalculator = new HPCalculator();
@@ -51,14 +53,14 @@ public class Controller {
         Double[] values;
         try {
             if (input.equals("ENTER")) {
-                values = hpCalculator.processInput(textField_1.getText());
+                values = hpCalculator.processInput(textField_1.getText(), !pushedValue);
             } else if (input.equals("CLX")) {
-                values = hpCalculator.processInput("0.0");
+                values = hpCalculator.processInput("0.0", false);
             } else {
                 if(!pushedValue){
-                    hpCalculator.processInput(textField_1.getText());
+                    hpCalculator.processInput(textField_1.getText(), false);
                 }
-                values = hpCalculator.processInput(input);
+                values = hpCalculator.processInput(input, false);
             }
             updateBoard(values);
             pushedValue = true;
@@ -76,5 +78,6 @@ public class Controller {
         textField_2.setText(String.valueOf(values[1]));
         textField_3.setText(String.valueOf(values[2]));
         textField_4.setText(String.valueOf(values[3]));
+        System.out.println(Arrays.toString(values));
     }
 }
