@@ -1,8 +1,16 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
-
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<GridPane fx:controller="sample.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-</GridPane>
+<?import javafx.scene.layout.HBox?>
+<HBox fx:controller="sample.Controller"
+      xmlns:fx="http://javafx.com/fxml" alignment="center" >
+    <Button text="2" onAction="#number"  fx:id="two" />
+    <Button text="3" onAction="#number"  fx:id="button1" />
+    <Button text="4" onAction="#number"  fx:id="button2" />
+    <Button text="5" onAction="#number"  fx:id="five" />
+    <Button text="+" onAction="#action"  fx:id="button3" />
+    <Button text="-" onAction="#action"  fx:id="button6" />
+    <Button text="*" onAction="#action"  fx:id="times" />
+    <Button text="/" onAction="#action"  fx:id="divide" />
+    <Button text="enter" onAction="#enter"  fx:id="button4" />
+
+
+</HBox>
