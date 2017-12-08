@@ -17,7 +17,7 @@ public class Stack {
      * @param element The element to be pushed.
      */
     public void push(int element) {
-        topOfStack++;
+        increaseTopOfStack();
         numberStack[topOfStack] = element;
     }
 
@@ -63,12 +63,28 @@ public class Stack {
     public int pop() {
         int numberToReturn = numberStack[topOfStack];
         /* Here we set the bottom of the stack to the item before. Due to the way the stack is implemented, the bottom
-            of it is always one step to the right of topOfStack. The % division is to take care of the case when
+            of it is always one step to the right of topOfStack. The modulo operation is to take care of the case when
             we exceed the array when doing topOfStack + 1. */
-        numberStack[topOfStack] = numberStack[(topOfStack + 1) % numberStack.length];
+        numberStack[topOfStack] = numberStack[Math.floorMod(topOfStack + 1, numberStack.length)];
 
-        topOfStack--;
+        decreaseTopOfStack();
         return numberToReturn;
+    }
+
+    /**
+     * Increase the value of topOfStack with one.
+     */
+    private void increaseTopOfStack() {
+        // Since the topOfStack is dynamic, we need to make addition to it circular.
+        topOfStack = Math.floorMod(topOfStack + 1, numberStack.length);
+    }
+
+    /**
+     * Decrease the value of topOfStack with one.
+     */
+    private void decreaseTopOfStack() {
+        // Since the topOfStack is dynamic, we need to make subtraction to it circular.
+        topOfStack = Math.floorMod(topOfStack - 1, numberStack.length);
     }
 
     /**
