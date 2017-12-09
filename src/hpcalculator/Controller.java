@@ -35,9 +35,10 @@ public class Controller {
         String input = "";
         if(event.getSource() instanceof Button) input = ((Button) event.getSource()).getText();
         if(!pushedValue && !textField_1.getText().startsWith("0")) {
-            textField_1.appendText(input);
+            textField_1.setText(String.valueOf(Double.parseDouble(textField_1.getText()) * 10 + Double.parseDouble(input)));
+            updateBoard(hpCalculator.processNumber(Double.parseDouble(textField_1.getText()), pushedValue));
         }else {
-            textField_1.setText(input);
+            updateBoard(hpCalculator.processNumber(Double.parseDouble(input), !pushedValue));
         }
         pushedValue = false;
     }
@@ -53,13 +54,10 @@ public class Controller {
         double[] values;
         try {
             if (input.equals("ENTER")) {
-                values = hpCalculator.processNumber(Double.parseDouble(textField_1.getText()), !pushedValue);
+                values = hpCalculator.processNumber(Double.parseDouble(textField_1.getText()), false, true);
             } else if (input.equals("CLX")) {
                 values = hpCalculator.processNumber(0.0, false);
             } else {
-                if(!pushedValue){
-                    hpCalculator.processNumber(Double.parseDouble(textField_1.getText()), false);
-                }
                 values = hpCalculator.processOperation(input);
             }
             updateBoard(values);

@@ -3,17 +3,32 @@ package hpcalculator;
 public class HPCalculator {
 
     private HPValues values;
-    private int times;
+    private boolean hasPressedOperation;
 
     public HPCalculator(){
         values = new HPValues();
     }
 
-    //ToDo: Change processInput to processNumber and make it so all numbers gets sent here and all operations to operation from outside.
-    public double[] processNumber(double input, boolean enter){
-        if((times > 0 && !(values.peek() == input))) values.pop();
-        if(enter) values.push(input);
-        times++;
+    /**
+     * Process for number input.
+     * @param input Input as an double.
+     * @param pushed If it's pushed.
+     * @return The array of number in double.
+     */
+    public double[] processNumber(double input, boolean pushed){
+        return processNumber(input, pushed, false);
+    }
+
+    /**
+     * Process for number input.
+     * @param input Input as a double.
+     * @param isPushed If it's isPushed.
+     * @param enter If we click the enter button.
+     * @return The array of number in double.
+     */
+    public double[] processNumber(double input, boolean isPushed, boolean enter){
+        if((hasPressedOperation && !(values.peek() == input)) || isPushed || !enter) values.pop();
+        hasPressedOperation = false;
         return values.push(input);
     }
 
@@ -22,7 +37,7 @@ public class HPCalculator {
      * @param input The operation input.
      */
     public double[] processOperation(String input){
-        times = 0;
+        hasPressedOperation = true;
         switch (input){
             case "+":
                 return values.push(Operations.PLUS.calculate(values.pop(), values.pop()));
