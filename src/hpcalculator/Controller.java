@@ -50,17 +50,17 @@ public class Controller {
     private void operationButtonHandler(ActionEvent event){
         String input = "";
         if(event.getSource() instanceof Button) input = ((Button) event.getSource()).getText();
-        Double[] values;
+        double[] values;
         try {
             if (input.equals("ENTER")) {
-                values = hpCalculator.processInput(textField_1.getText(), !pushedValue);
+                values = hpCalculator.processNumber(Double.parseDouble(textField_1.getText()), !pushedValue);
             } else if (input.equals("CLX")) {
-                values = hpCalculator.processInput("0.0", false);
+                values = hpCalculator.processNumber(0.0, false);
             } else {
                 if(!pushedValue){
-                    hpCalculator.processInput(textField_1.getText(), false);
+                    hpCalculator.processNumber(Double.parseDouble(textField_1.getText()), false);
                 }
-                values = hpCalculator.processInput(input, false);
+                values = hpCalculator.processOperation(input);
             }
             updateBoard(values);
             pushedValue = true;
@@ -73,7 +73,7 @@ public class Controller {
      * Update text fields.
      * @param values The new values.
      */
-    private void updateBoard(Double[] values){
+    private void updateBoard(double[] values){
         textField_1.setText(String.valueOf(values[0]));
         textField_2.setText(String.valueOf(values[1]));
         textField_3.setText(String.valueOf(values[2]));

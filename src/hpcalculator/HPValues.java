@@ -2,13 +2,13 @@ package hpcalculator;
 
 public class  HPValues{
 
-    private Double[] values;
+    private double[] values;
 
     public HPValues(){
-        values = new Double[]{0.0, 0.0, 0.0, 0.0};
+        values = new double[]{0.0, 0.0, 0.0, 0.0};
     }
 
-    public Double[] getValues() {
+    public double[] getValues() {
         return values;
     }
 
@@ -17,7 +17,7 @@ public class  HPValues{
      * @param value The value to be added.
      * @return All the new values
      */
-    public Double[] push(Double value){
+    public double[] push(double value){
         if(values[0] == 0) {
             values[0] = value;
         }else {
@@ -49,8 +49,8 @@ public class  HPValues{
      * Getting the first value and removing the first from the array.
      * @return The first value.
      */
-    public Double pop(){
-        Double returnTemp = peek();
+    public double pop(){
+        double returnTemp = peek();
         moveLeft();
         return returnTemp;
     }
@@ -59,7 +59,7 @@ public class  HPValues{
      * Looking at the first value.
      * @return The first value.
      */
-    public Double peek(){
+    public double peek(){
         return values[0];
     }
 
@@ -67,8 +67,8 @@ public class  HPValues{
      * Resetting the array.
      * @return The new values.
      */
-    public Double[] empty(){
-        values = new Double[]{0.0, 0.0, 0.0, 0.0};
+    public double[] empty(){
+        values = new double[]{0.0, 0.0, 0.0, 0.0};
         return values;
     }
 }

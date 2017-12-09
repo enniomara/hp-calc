@@ -9,62 +9,33 @@ public class HPCalculator {
         values = new HPValues();
     }
 
-    /**
-     * Process for the input.
-     * @param input The input as an string.
-     * @return The new array.
-     */
-    public Double[] processInput(String input, boolean enter){
-        Double value = tryParseDouble(input);
-        if(value == null){
-            processOperation(input);
-            times = 0;
-            return values.getValues();
-        }else {
-            if(times > 0 && !values.peek().equals(value)) values.pop();
-            if(enter) values.push(value);
-            times++;
-            return values.push(value);
-        }
-    }
-
-    /**
-     * Trying to parse the string to a double, if not the we know it´s a operation or something els.
-     * @param input The input we are trying to parse to double.
-     * @return An double or null if it´s an operation or something els.
-     */
-    private Double tryParseDouble(String input){
-        try {
-            return Double.parseDouble(input);
-        } catch (Exception e){
-            return null;
-        }
+    //ToDo: Change processInput to processNumber and make it so all numbers gets sent here and all operations to operation from outside.
+    public double[] processNumber(double input, boolean enter){
+        if((times > 0 && !(values.peek() == input))) values.pop();
+        if(enter) values.push(input);
+        times++;
+        return values.push(input);
     }
 
     /**
      * Precess for operation input.
      * @param input The operation input.
      */
-    private void processOperation(String input){
+    public double[] processOperation(String input){
+        times = 0;
         switch (input){
             case "+":
-                values.push(Operations.PLUS.calculate(values.pop(), values.pop()));
-                break;
+                return values.push(Operations.PLUS.calculate(values.pop(), values.pop()));
             case "-":
-                values.push(Operations.MINUS.calculate(values.pop(), values.pop()));
-                break;
+                return values.push(Operations.MINUS.calculate(values.pop(), values.pop()));
             case "*":
-                values.push(Operations.TIMES.calculate(values.pop(), values.pop()));
-                break;
+                return values.push(Operations.TIMES.calculate(values.pop(), values.pop()));
             case "/":
-                values.push(Operations.DIVIDES.calculate(values.pop(), values.pop()));
-                break;
+                return values.push(Operations.DIVIDES.calculate(values.pop(), values.pop()));
             case "CSTK":
-                values.empty();
-                break;
+                return values.empty();
             case "CHS":
-                values.push(-values.pop());
-                break;
+                return values.push(-values.pop());
             default:
                 throw new Error("Operation not existing");
         }
