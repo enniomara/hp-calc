@@ -19,7 +19,7 @@ public class Controller {
         String topOfStackElement = "";
         if (!enterPressed) {
             try {
-                topOfStackElement = Integer.toString(calculatorStack.peek());
+                topOfStackElement = Double.toString(calculatorStack.peek());
                 enterPressed = false;
             } catch (NullPointerException e) {
                 topOfStackElement = "";
@@ -57,20 +57,20 @@ public class Controller {
 
     public double execute(Operations action) {
         if (action == Operations.PLUS) {
-            int result = calculatorStack.pop() + calculatorStack.pop();
+            double result = calculatorStack.pop() + calculatorStack.pop();
             calculatorStack.push(result);
         } else if (action == Operations.MINUS) {
-            int firstElement = calculatorStack.pop();
-            int secondElement = calculatorStack.pop();
-            int result = secondElement - firstElement;
+            double firstElement = calculatorStack.pop();
+            double secondElement = calculatorStack.pop();
+            double result = secondElement - firstElement;
             calculatorStack.push(result);
         } else if (action == Operations.TIMES) {
-            int result = calculatorStack.pop() * calculatorStack.pop();
+            double result = calculatorStack.pop() * calculatorStack.pop();
             calculatorStack.push(result);
         } else if (action == Operations.DIVIDES) {
-            int firstElement = calculatorStack.pop();
-            int secondElement = calculatorStack.pop();
-            int result = secondElement / firstElement;
+            double firstElement = calculatorStack.pop();
+            double secondElement = calculatorStack.pop();
+            double result = secondElement / firstElement;
             calculatorStack.push(result);
         }
         printStack();

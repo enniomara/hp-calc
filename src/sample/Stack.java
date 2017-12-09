@@ -1,14 +1,14 @@
 package sample;
 
 public class Stack {
-    private int[] numberStack;
+    private double[] numberStack;
     /**
      * Pointer that points to the element that is considered the top of the stack.
      */
     private int topOfStack = -1;
 
     public Stack(int size) {
-        numberStack = new int[size];
+        numberStack = new double[size];
     }
 
     /**
@@ -16,7 +16,7 @@ public class Stack {
      *
      * @param element The element to be pushed.
      */
-    public void push(int element) {
+    public void push(double element) {
         increaseTopOfStack();
         numberStack[topOfStack] = element;
     }
@@ -26,7 +26,7 @@ public class Stack {
      *
      * @param element The element that will be pushed/replace top of the stack.
      */
-    public void push(int element, boolean replaceTop) {
+    public void push(double element, boolean replaceTop) {
         // If it should not be replaced, do an ordinary push
         if (!replaceTop) {
             push(element);
@@ -47,7 +47,7 @@ public class Stack {
      *
      * @return The object at the top of the stack.
      */
-    public int peek() {
+    public double peek() {
         if (topOfStack < 0) {
             throw new NullPointerException();
         }
@@ -60,8 +60,8 @@ public class Stack {
      *
      * @return The object at the top of this stack.
      */
-    public int pop() {
-        int numberToReturn = peek();
+    public double pop() {
+        double numberToReturn = peek();
         /* Here we set the bottom of the stack to the item before. Due to the way the stack is implemented, the bottom
             of it is always one step to the right of topOfStack. The modulo operation is to take care of the case when
             we exceed the array when doing topOfStack + 1. */
@@ -93,10 +93,10 @@ public class Stack {
     @Override
     public String toString() {
         StringBuilder output = new StringBuilder();
-        int[] orderedStack = getStackInOrder();
+        double[] orderedStack = getStackInOrder();
 
         output.append("[");
-        for (int i : orderedStack) {
+        for (double i : orderedStack) {
             output.append(i).append(",");
         }
         output.deleteCharAt(output.length() - 1);   // Remove the last comma (,) from the string as we have no more elements.
@@ -110,8 +110,8 @@ public class Stack {
      *
      * @return The formatted stack.
      */
-    public int[] getStackInOrder() {
-        int[] formattedList = new int[numberStack.length];
+    public double[] getStackInOrder() {
+        double[] formattedList = new double[numberStack.length];
         int newArrayPointer = 0;
         int oldArrayPointer = topOfStack;
 
