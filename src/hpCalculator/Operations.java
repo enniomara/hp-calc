@@ -1,4 +1,4 @@
-package hpcalculator;
+package hpCalculator;
 
 public enum Operations {
     PLUS, MINUS, TIMES, DIVIDES;

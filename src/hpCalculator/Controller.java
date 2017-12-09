@@ -1,4 +1,4 @@
-package hpcalculator;
+package hpCalculator;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

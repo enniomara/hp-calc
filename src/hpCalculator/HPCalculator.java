@@ -1,4 +1,4 @@
-package hpcalculator;
+package hpCalculator;
 
 public class HPCalculator {
 
