@@ -61,7 +61,7 @@ public class Stack {
      * @return The object at the top of this stack.
      */
     public int pop() {
-        int numberToReturn = numberStack[topOfStack];
+        int numberToReturn = peek();
         /* Here we set the bottom of the stack to the item before. Due to the way the stack is implemented, the bottom
             of it is always one step to the right of topOfStack. The modulo operation is to take care of the case when
             we exceed the array when doing topOfStack + 1. */
@@ -88,16 +88,45 @@ public class Stack {
     }
 
     /**
-     * @return The stack in string format.
+     * @return The stack in string format ([1, 3, 4]. The top of the stack is at place 0, and the rest of the elements come after.
      */
     @Override
     public String toString() {
         StringBuilder output = new StringBuilder();
-        for (int i : numberStack) {
-            output.append("\n").append(i).append(",");
+        int[] orderedStack = getStackInOrder();
+
+        output.append("[");
+        for (int i : orderedStack) {
+            output.append(i).append(",");
         }
-        output.append(" ");
+        output.deleteCharAt(output.length() - 1);   // Remove the last comma (,) from the string as we have no more elements.
+        output.append("]");
 
         return output.toString();
+    }
+
+    /**
+     * Retrieve the stack array in order. The top of the stack will be at element 0 in the array.
+     *
+     * @return The formatted stack.
+     */
+    public int[] getStackInOrder() {
+        int[] formattedList = new int[numberStack.length];
+        int newArrayPointer = 0;
+        int oldArrayPointer = topOfStack;
+
+        /* Since we have a circular array, we can't do an ordinary for loop (as the index of the old array goes up
+            to numberStack.length and then goes back to 0.
+         */
+        do {
+            formattedList[newArrayPointer] = numberStack[oldArrayPointer];
+            newArrayPointer++;
+            /* The first element that was inserted in the stack is at place 0. So to print the stack in order, we have
+                to start at topOfStack, and then go backwards. */
+            oldArrayPointer = Math.floorMod(oldArrayPointer - 1, numberStack.length);
+        }
+        while (newArrayPointer < formattedList.length); // The loop needs to break when the new formatted list is full.
+
+        return formattedList;
     }
 }
