@@ -12,11 +12,11 @@ public class HPCalculator {
     /**
      * Process for number input.
      * @param input Input as an double.
-     * @param pushed If it's pushed.
+     * @param isPushed If it's pushed.
      * @return The array of number in double.
      */
-    public double[] processNumber(double input, boolean pushed){
-        return processNumber(input, pushed, false);
+    public double[] processNumber(double input, boolean isPushed){
+        return processNumber(input, isPushed, false);
     }
 
     /**
@@ -27,8 +27,9 @@ public class HPCalculator {
      * @return The array of number in double.
      */
     public double[] processNumber(double input, boolean isPushed, boolean enter){
-        if((hasPressedOperation && !(values.peek() == input)) || isPushed || !enter) values.pop();
-        hasPressedOperation = false;
+        if(isPushed && !enter){
+            values.pop();
+        }
         return values.push(input);
     }
 

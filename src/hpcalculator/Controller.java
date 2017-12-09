@@ -12,7 +12,7 @@ import java.util.Arrays;
 public class Controller {
 
     private HPCalculator hpCalculator = new HPCalculator();
-    private boolean pushedValue;
+    private boolean pushedValue, operation;
 
     @FXML
     private TextField textField_1;
@@ -36,9 +36,9 @@ public class Controller {
         if(event.getSource() instanceof Button) input = ((Button) event.getSource()).getText();
         if(!pushedValue && !textField_1.getText().startsWith("0")) {
             textField_1.setText(String.valueOf(Double.parseDouble(textField_1.getText()) * 10 + Double.parseDouble(input)));
-            updateBoard(hpCalculator.processNumber(Double.parseDouble(textField_1.getText()), pushedValue));
+            updateBoard(hpCalculator.processNumber(Double.parseDouble(textField_1.getText()), !pushedValue));
         }else {
-            updateBoard(hpCalculator.processNumber(Double.parseDouble(input), !pushedValue));
+            updateBoard(hpCalculator.processNumber(Double.parseDouble(input), !operation));
         }
         pushedValue = false;
     }
@@ -59,6 +59,7 @@ public class Controller {
                 values = hpCalculator.processNumber(0.0, false);
             } else {
                 values = hpCalculator.processOperation(input);
+                operation = true;
             }
             updateBoard(values);
             pushedValue = true;
