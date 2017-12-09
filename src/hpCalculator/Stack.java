@@ -1,4 +1,4 @@
-package sample;
+package hpCalculator;
 
 public class Stack {
     private double[] numberStack;

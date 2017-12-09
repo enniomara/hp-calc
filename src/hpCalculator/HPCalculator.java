@@ -2,10 +2,10 @@ package hpCalculator;
 
 public class HPCalculator {
 
-    private HPValues calculatorStack;
+    private Stack calculatorStack;
 
     public HPCalculator(){
-        calculatorStack = new HPValues();
+        calculatorStack = new Stack(4);
     }
 
     /**
@@ -27,9 +27,11 @@ public class HPCalculator {
      */
     public double[] processNumber(double input, boolean isPushed, boolean enter){
         if(isPushed && !enter){
-            calculatorStack.pop();
+            calculatorStack.push(input, true);
+        }else {
+            calculatorStack.push(input);
         }
-        return calculatorStack.push(input);
+        return calculatorStack.getStackInOrder();
     }
 
     /**
@@ -40,20 +42,27 @@ public class HPCalculator {
     public double[] processOperation(String input){
         switch (input){
             case "+":
-                return calculatorStack.push(Operations.PLUS.calculate(calculatorStack.pop(), calculatorStack.pop()));
+                calculatorStack.push(Operations.PLUS.calculate(calculatorStack.pop(), calculatorStack.pop()));
+                break;
             case "-":
-                return calculatorStack.push(Operations.MINUS.calculate(calculatorStack.pop(), calculatorStack.pop()));
+                calculatorStack.push(Operations.MINUS.calculate(calculatorStack.pop(), calculatorStack.pop()));
+                break;
             case "*":
-                return calculatorStack.push(Operations.TIMES.calculate(calculatorStack.pop(), calculatorStack.pop()));
+                calculatorStack.push(Operations.TIMES.calculate(calculatorStack.pop(), calculatorStack.pop()));
+                break;
             case "/":
-                return calculatorStack.push(Operations.DIVIDES.calculate(calculatorStack.pop(), calculatorStack.pop()));
+                calculatorStack.push(Operations.DIVIDES.calculate(calculatorStack.pop(), calculatorStack.pop()));
+                break;
             case "CSTK":
-                return calculatorStack.empty();
+                //calculatorStack.empty();
+                break;
             case "CHS":
-                return calculatorStack.push(-calculatorStack.pop());
+                calculatorStack.push(-calculatorStack.pop());
+                break;
             default:
                 throw new Error("Operation does not exist.");
         }
+        return calculatorStack.getStackInOrder();
     }
 
 }
