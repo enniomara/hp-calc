@@ -15,16 +15,16 @@ public class Controller {
     private boolean pushedValue, operation;
 
     @FXML
-    private TextField textField_1;
+    private TextField stackAtFirstPlace;
 
     @FXML
-    private TextField textField_2;
+    private TextField stackAtSecondPlace;
 
     @FXML
-    private TextField textField_3;
+    private TextField stackAtThirdPlace;
 
     @FXML
-    private TextField textField_4;
+    private TextField stackAtFourthPlace;
 
     /**
      * Handler for number and comma buttons.
@@ -32,13 +32,12 @@ public class Controller {
      */
     @FXML
     private void numberButtonHandler(ActionEvent event){
-        String input = "";
-        if(event.getSource() instanceof Button) input = ((Button) event.getSource()).getText();
-        if(!pushedValue && !textField_1.getText().startsWith("0")) {
-            textField_1.setText(String.valueOf(Double.parseDouble(textField_1.getText()) * 10 + Double.parseDouble(input)));
-            updateBoard(hpCalculator.processNumber(Double.parseDouble(textField_1.getText()), !pushedValue));
+        double input = Double.parseDouble(((Button) event.getSource()).getText());
+        if(!pushedValue && !stackAtFirstPlace.getText().startsWith("0")) {
+            stackAtFirstPlace.setText(String.valueOf(Double.parseDouble(stackAtFirstPlace.getText()) * 10 + input));
+            updateBoard(hpCalculator.processNumber(Double.parseDouble(stackAtFirstPlace.getText()), !pushedValue));
         }else {
-            updateBoard(hpCalculator.processNumber(Double.parseDouble(input), !operation));
+            updateBoard(hpCalculator.processNumber(input, !operation));
         }
         pushedValue = false;
     }
@@ -49,12 +48,11 @@ public class Controller {
      */
     @FXML
     private void operationButtonHandler(ActionEvent event){
-        String input = "";
-        if(event.getSource() instanceof Button) input = ((Button) event.getSource()).getText();
+        String input = ((Button) event.getSource()).getText();
         double[] values;
         try {
             if (input.equals("ENTER")) {
-                values = hpCalculator.processNumber(Double.parseDouble(textField_1.getText()), false, true);
+                values = hpCalculator.processNumber(Double.parseDouble(stackAtFirstPlace.getText()), false, true);
             } else if (input.equals("CLX")) {
                 values = hpCalculator.processNumber(0.0, false);
             } else {
@@ -73,10 +71,10 @@ public class Controller {
      * @param values The new values.
      */
     private void updateBoard(double[] values){
-        textField_1.setText(String.valueOf(values[0]));
-        textField_2.setText(String.valueOf(values[1]));
-        textField_3.setText(String.valueOf(values[2]));
-        textField_4.setText(String.valueOf(values[3]));
+        stackAtFirstPlace.setText(String.valueOf(values[0]));
+        stackAtSecondPlace.setText(String.valueOf(values[1]));
+        stackAtThirdPlace.setText(String.valueOf(values[2]));
+        stackAtFourthPlace.setText(String.valueOf(values[3]));
         System.out.println(Arrays.toString(values));
     }
 }

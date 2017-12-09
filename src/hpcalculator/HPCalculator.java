@@ -2,15 +2,14 @@ package hpcalculator;
 
 public class HPCalculator {
 
-    private HPValues values;
-    private boolean hasPressedOperation;
+    private HPValues calculatorStack;
 
     public HPCalculator(){
-        values = new HPValues();
+        calculatorStack = new HPValues();
     }
 
     /**
-     * Process for number input.
+     * Process for number input. Pushing the number input to the array and also poping a value if need.
      * @param input Input as an double.
      * @param isPushed If it's pushed.
      * @return The array of number in double.
@@ -20,7 +19,7 @@ public class HPCalculator {
     }
 
     /**
-     * Process for number input.
+     * Process for number input. Pushing the number input to the array and also poping a value if need.
      * @param input Input as a double.
      * @param isPushed If it's isPushed.
      * @param enter If we click the enter button.
@@ -28,32 +27,32 @@ public class HPCalculator {
      */
     public double[] processNumber(double input, boolean isPushed, boolean enter){
         if(isPushed && !enter){
-            values.pop();
+            calculatorStack.pop();
         }
-        return values.push(input);
+        return calculatorStack.push(input);
     }
 
     /**
      * Precess for operation input.
      * @param input The operation input.
+     * @return Returns new array of values.
      */
     public double[] processOperation(String input){
-        hasPressedOperation = true;
         switch (input){
             case "+":
-                return values.push(Operations.PLUS.calculate(values.pop(), values.pop()));
+                return calculatorStack.push(Operations.PLUS.calculate(calculatorStack.pop(), calculatorStack.pop()));
             case "-":
-                return values.push(Operations.MINUS.calculate(values.pop(), values.pop()));
+                return calculatorStack.push(Operations.MINUS.calculate(calculatorStack.pop(), calculatorStack.pop()));
             case "*":
-                return values.push(Operations.TIMES.calculate(values.pop(), values.pop()));
+                return calculatorStack.push(Operations.TIMES.calculate(calculatorStack.pop(), calculatorStack.pop()));
             case "/":
-                return values.push(Operations.DIVIDES.calculate(values.pop(), values.pop()));
+                return calculatorStack.push(Operations.DIVIDES.calculate(calculatorStack.pop(), calculatorStack.pop()));
             case "CSTK":
-                return values.empty();
+                return calculatorStack.empty();
             case "CHS":
-                return values.push(-values.pop());
+                return calculatorStack.push(-calculatorStack.pop());
             default:
-                throw new Error("Operation not existing");
+                throw new Error("Operation does not exist.");
         }
     }
 

@@ -22,10 +22,10 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="textField_4" disable="true" editable="false" alignment="CENTER_RIGHT" text="0.0" styleClass="text-field" stylesheets="@../stylesheet.css" />
-            <TextField fx:id="textField_3" disable="true" editable="false" alignment="CENTER_RIGHT" text="0.0" styleClass="text-field" stylesheets="@../stylesheet.css" GridPane.rowIndex="1" />
-            <TextField fx:id="textField_2" disable="true" editable="false" alignment="CENTER_RIGHT" text="0.0" styleClass="text-field" stylesheets="@../stylesheet.css" GridPane.rowIndex="2" />
-            <TextField fx:id="textField_1" disable="true" editable="false" alignment="CENTER_RIGHT" text="0.0" styleClass="text-field" stylesheets="@../stylesheet.css" GridPane.rowIndex="3" />
+            <TextField fx:id="stackAtFourthPlace" disable="true" editable="false" alignment="CENTER_RIGHT" text="0.0" styleClass="text-field" stylesheets="@../stylesheet.css" />
+            <TextField fx:id="stackAtThirdPlace" disable="true" editable="false" alignment="CENTER_RIGHT" text="0.0" styleClass="text-field" stylesheets="@../stylesheet.css" GridPane.rowIndex="1" />
+            <TextField fx:id="stackAtSecondPlace" disable="true" editable="false" alignment="CENTER_RIGHT" text="0.0" styleClass="text-field" stylesheets="@../stylesheet.css" GridPane.rowIndex="2" />
+            <TextField fx:id="stackAtFirstPlace" disable="true" editable="false" alignment="CENTER_RIGHT" text="0.0" styleClass="text-field" stylesheets="@../stylesheet.css" GridPane.rowIndex="3" />
          </children>
       </GridPane>
       <GridPane layoutY="173.0" prefHeight="328.0" prefWidth="300.0">
