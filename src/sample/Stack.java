@@ -112,20 +112,14 @@ public class Stack {
      */
     public double[] getStackInOrder() {
         double[] formattedList = new double[numberStack.length];
-        int newArrayPointer = 0;
         int oldArrayPointer = topOfStack;
 
-        /* Since we have a circular array, we can't do an ordinary for loop (as the index of the old array goes up
-            to numberStack.length and then goes back to 0.
-         */
-        do {
-            formattedList[newArrayPointer] = numberStack[oldArrayPointer];
-            newArrayPointer++;
+        for (int i = 0; i < formattedList.length; i++) {
+            formattedList[i] = numberStack[oldArrayPointer];
             /* The first element that was inserted in the stack is at place 0. So to print the stack in order, we have
                 to start at topOfStack, and then go backwards. */
             oldArrayPointer = Math.floorMod(oldArrayPointer - 1, numberStack.length);
         }
-        while (newArrayPointer < formattedList.length); // The loop needs to break when the new formatted list is full.
 
         return formattedList;
     }
