@@ -106,11 +106,20 @@ public class Stack {
     }
 
     /**
+     * Empty stack and reset the topOfStack pointer.
+     */
+    public void empty() {
+        numberStack = new double[numberStack.length];
+        topOfStack = -1;
+    }
+
+    /**
      * Retrieve the stack array in order. The top of the stack will be at element 0 in the array.
      *
      * @return The formatted stack.
      */
     public double[] getStackInOrder() {
+        if (topOfStack < 0) return numberStack;
         double[] formattedList = new double[numberStack.length];
         int oldArrayPointer = topOfStack;
 

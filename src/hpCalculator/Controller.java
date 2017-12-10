@@ -55,42 +55,47 @@ public class Controller {
     private void operationButtonHandler(ActionEvent event) {
         String input = ((Button) event.getSource()).getText();
         double[] values;
-        switch (input) {
-            case "ENTER":
-                values = hpCalculator.processNumber(Double.parseDouble(stackAtFirstPlace.getText()), false);
-                enter = true;
-                break;
-            case "+":
-                values = hpCalculator.processOperation(Operations.PLUS);
-                operation = true;
-                break;
-            case "-":
-                values = hpCalculator.processOperation(Operations.MINUS);
-                operation = true;
-                break;
-            case "*":
-                values = hpCalculator.processOperation(Operations.TIMES);
-                operation = true;
-                break;
-            case "/":
-                values = hpCalculator.processOperation(Operations.DIVIDES);
-                operation = true;
-                break;
-            case "CSTK":
-                values = hpCalculator.processOperation(Operations.CLEARSTACK);
-                operation = true;
-                break;
-            case "CHS":
-                values = hpCalculator.processOperation(Operations.CHS);
-                operation = true;
-                break;
-            case "CLX":
-                values = hpCalculator.processOperation(Operations.CLEAR);
-                break;
-            default:
-                throw new Error("Operation does not exist.");
+        try {
+            switch (input) {
+                case "ENTER":
+                    values = hpCalculator.processNumber(Double.parseDouble(stackAtFirstPlace.getText()), false);
+                    enter = true;
+                    break;
+                case "+":
+                    values = hpCalculator.processOperation(Operations.PLUS);
+                    operation = true;
+                    break;
+                case "-":
+                    values = hpCalculator.processOperation(Operations.MINUS);
+                    operation = true;
+                    break;
+                case "*":
+                    values = hpCalculator.processOperation(Operations.TIMES);
+                    operation = true;
+                    break;
+                case "/":
+                    values = hpCalculator.processOperation(Operations.DIVIDES);
+                    operation = true;
+                    break;
+                case "CSTK":
+                    values = hpCalculator.processOperation(Operations.CLEARSTACK);
+                    operation = true;
+                    break;
+                case "CHS":
+                    values = hpCalculator.processOperation(Operations.CHS);
+                    operation = true;
+                    break;
+                case "CLX":
+                    values = hpCalculator.processOperation(Operations.CLEAR);
+                    break;
+                default:
+                    throw new Error("Operation does not exist.");
+            }
+            updateBoard(values);
+        } catch (Error e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).showAndWait();
         }
-        updateBoard(values);
+
     }
 
     /**

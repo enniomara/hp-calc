@@ -49,8 +49,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
             </rowConstraints>
             <children>
-                <Button id="button_dot" mnemonicParsing="false" onAction="#numberButtonHandler"
-                        stylesheets="@../stylesheet.css" text="." textAlignment="CENTER" GridPane.rowIndex="4">
+                <Button mnemonicParsing="false" stylesheets="@../stylesheet.css" GridPane.rowIndex="4">
                     <opaqueInsets>
                         <Insets/>
                     </opaqueInsets>

@@ -44,7 +44,7 @@ public class HPCalculator {
                 calculatorStack.push(calculatorStack.pop() / y);
                 break;
             case CLEARSTACK:
-                //calculatorStack.empty();
+                calculatorStack.empty();
                 break;
             case CHS:
                 calculatorStack.push(-calculatorStack.pop());
