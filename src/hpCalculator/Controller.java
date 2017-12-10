@@ -12,7 +12,7 @@ import java.util.Arrays;
 public class Controller {
 
     private HPCalculator hpCalculator = new HPCalculator();
-    private boolean pushedValue, operation;
+    private boolean enter, operation;
 
     @FXML
     private TextField stackAtFirstPlace;
@@ -34,13 +34,16 @@ public class Controller {
     @FXML
     private void numberButtonHandler(ActionEvent event) {
         double input = Double.parseDouble(((Button) event.getSource()).getText());
-        if (!pushedValue && !stackAtFirstPlace.getText().startsWith("0")) {
+        if (stackAtFirstPlace.getText().equals("0.0") || enter) {
+            updateBoard(hpCalculator.processNumber(input, true));
+        } else if (!operation) {
             stackAtFirstPlace.setText(String.valueOf(Double.parseDouble(stackAtFirstPlace.getText()) * 10 + input));
-            updateBoard(hpCalculator.processNumber(Double.parseDouble(stackAtFirstPlace.getText()), !pushedValue));
+            updateBoard(hpCalculator.processNumber(Double.parseDouble(stackAtFirstPlace.getText()), true));
         } else {
-            updateBoard(hpCalculator.processNumber(input, !operation));
+            updateBoard(hpCalculator.processNumber(input, false));
         }
-        pushedValue = false;
+        operation = false;
+        enter = false;
     }
 
     /**
@@ -54,7 +57,8 @@ public class Controller {
         double[] values;
         switch (input) {
             case "ENTER":
-                values = hpCalculator.processNumber(Double.parseDouble(stackAtFirstPlace.getText()), false, true);
+                values = hpCalculator.processNumber(Double.parseDouble(stackAtFirstPlace.getText()), false);
+                enter = true;
                 break;
             case "+":
                 values = hpCalculator.processOperation(Operations.PLUS);
@@ -87,7 +91,6 @@ public class Controller {
                 throw new Error("Operation does not exist.");
         }
         updateBoard(values);
-        pushedValue = true;
     }
 
     /**

@@ -11,28 +11,12 @@ public class HPCalculator {
     /**
      * Process for number input. Pushing the number input to the array and also poping a value if need.
      *
-     * @param input    Input as an double.
-     * @param isPushed If it's pushed.
+     * @param input      Input as a double.
+     * @param replaceTop If the top should be replaced.
      * @return The array of number in double.
      */
-    public double[] processNumber(double input, boolean isPushed) {
-        return processNumber(input, isPushed, false);
-    }
-
-    /**
-     * Process for number input. Pushing the number input to the array and also poping a value if need.
-     *
-     * @param input    Input as a double.
-     * @param isPushed If it's isPushed.
-     * @param enter    If we click the enter button.
-     * @return The array of number in double.
-     */
-    public double[] processNumber(double input, boolean isPushed, boolean enter) {
-        if (isPushed && !enter) {
-            calculatorStack.push(input, true);
-        } else {
-            calculatorStack.push(input);
-        }
+    public double[] processNumber(double input, boolean replaceTop) {
+        calculatorStack.push(input, replaceTop);
         return calculatorStack.getStackInOrder();
     }
 

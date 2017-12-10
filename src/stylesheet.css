@@ -1,4 +1,4 @@
-.button{
+.button {
     -fx-background-color: #434343;
     -fx-text-fill: #fff;
     -fx-background-radius: 0px;
@@ -7,24 +7,24 @@
     -fx-font-size: 24px;
 }
 
-.buttonOpe{
+.buttonOpe {
     -fx-font-size: 16px;
 }
 
-.button:pressed{
+.button:pressed {
     -fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;
     -fx-background-radius: 3px;
     -fx-background-insets: 0px;
 
 }
 
-AnchorPane{
+AnchorPane {
     -fx-padding: 0px;
     -fx-pref-width: 300px;
     -fx-pref-height: 500px;
 }
 
-.text-field{
+.text-field {
     -fx-font-size: 24px;
     -fx-pref-height: 43px;
     -fx-opacity: 1;
