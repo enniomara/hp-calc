@@ -7,14 +7,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 
-public class Controller {
-    private HPCalculator hpCalculator;
+import java.util.EmptyStackException;
 
-    public Controller() {
-        hpCalculator = new HPCalculator();
-        // The stack is uninitialized.
-        hpCalculator.insertNumber(0, false);
-    }
+public class Controller {
+    private HPCalculator hpCalculator = new HPCalculator();
+
     /**
      * To determine if we should replace top or not. Changes to 'true' when enter is pressed and 'false' when numbers
      * is pressed.
@@ -111,6 +108,8 @@ public class Controller {
                     throw new IllegalArgumentException("Operation does not exist.");
             }
             updateBoard(values);
+        } catch (EmptyStackException e) {
+            new Alert(Alert.AlertType.ERROR, "Could not perform operation because the stack is empty.", ButtonType.OK).showAndWait();
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).showAndWait();
         }
