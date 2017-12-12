@@ -109,7 +109,7 @@ public class Controller {
                     throw new IllegalArgumentException("Operation does not exist.");
             }
             updateBoard(values);
-        } catch (IllegalArgumentException e) {
+        } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).showAndWait();
         }
     }
