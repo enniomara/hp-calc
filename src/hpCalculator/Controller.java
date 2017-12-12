@@ -124,6 +124,5 @@ public class Controller {
         stackAtSecondPlace.setText(String.valueOf(values[1]));
         stackAtThirdPlace.setText(String.valueOf(values[2]));
         stackAtFourthPlace.setText(String.valueOf(values[3]));
-        System.out.println(Arrays.toString(values));
     }
 }
