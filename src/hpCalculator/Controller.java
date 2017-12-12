@@ -8,8 +8,13 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 
 public class Controller {
-    private HPCalculator hpCalculator = new HPCalculator();
+    private HPCalculator hpCalculator;
 
+    public Controller() {
+        hpCalculator = new HPCalculator();
+        // The stack is uninitialized.
+        hpCalculator.insertNumber(0, false);
+    }
     /**
      * To determine if we should replace top or not. Changes to 'true' when enter is pressed and 'false' when numbers
      * is pressed.
