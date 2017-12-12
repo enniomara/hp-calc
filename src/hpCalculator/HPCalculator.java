@@ -9,7 +9,7 @@ public class HPCalculator {
     }
 
     /**
-     * Process for number number. Pushing the number number to the array and also poping a value if need.
+     * Process for number number. Pushing the number number to the array and also popping a value if needed.
      *
      * @param number     Number as a double.
      * @param replaceTop Whether the top element of the stack should be replaced by the number passed in.
@@ -25,7 +25,7 @@ public class HPCalculator {
      *
      * @param operation The stack's content in array form.
      * @return Returns new array of values.
-     * @throws IllegalArgumentException
+     * @throws IllegalArgumentException When an invalid operation is entered.
      */
     public double[] processOperation(Operations operation) throws IllegalArgumentException {
         double temporaryNumber;

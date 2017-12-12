@@ -26,7 +26,7 @@ public class Stack {
     /**
      * Push with the ability to replace the top of the stack with the inputted element.
      *
-     * @param element The element that will be pushed/replace top of throwse stack.
+     * @param element The element that will be pushed/replace top of the stack.
      */
     public void push(double element, boolean replaceTop) {
         // If it should not be replaced, do an ordinary push
@@ -91,7 +91,7 @@ public class Stack {
     }
 
     /**
-     * @return The stack in string format ([1, 3, 4]. The top of the stack is at place 0, and the rest of the elements come after.
+     * @return The stack in string format ([1, 3, 4]). The top of the stack is at place 0, and the rest of the elements come after.
      */
     @Override
     public String toString() {
