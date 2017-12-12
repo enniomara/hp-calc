@@ -1,4 +1,4 @@
-package sample;
+package hpCalculator;
 
 public class Stack {
     private double[] numberStack;
@@ -106,11 +106,21 @@ public class Stack {
     }
 
     /**
+     * Empty stack and reset the topOfStack pointer.
+     */
+    public void empty() {
+        numberStack = new double[numberStack.length];
+        topOfStack = -1;
+    }
+
+    /**
      * Retrieve the stack array in order. The top of the stack will be at element 0 in the array.
      *
      * @return The formatted stack.
      */
     public double[] getStackInOrder() {
+        // If stack is empty (the pointer is less than 0), return the empty array.
+        if (topOfStack < 0) return numberStack;
         double[] formattedList = new double[numberStack.length];
         int oldArrayPointer = topOfStack;
 
