@@ -25,8 +25,9 @@ public class HPCalculator {
      *
      * @param operation The stack's content in array form.
      * @return Returns new array of values.
+     * @throws IllegalArgumentException
      */
-    public double[] processOperation(Operations operation) {
+    public double[] processOperation(Operations operation) throws IllegalArgumentException {
         double temporaryNumber;
         switch (operation) {
             case PLUS:

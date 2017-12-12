@@ -1,5 +1,7 @@
 package hpCalculator;
 
+import java.util.EmptyStackException;
+
 public class Stack {
     private double[] numberStack;
     /**
@@ -24,7 +26,7 @@ public class Stack {
     /**
      * Push with the ability to replace the top of the stack with the inputted element.
      *
-     * @param element The element that will be pushed/replace top of the stack.
+     * @param element The element that will be pushed/replace top of throwse stack.
      */
     public void push(double element, boolean replaceTop) {
         // If it should not be replaced, do an ordinary push
@@ -46,10 +48,11 @@ public class Stack {
      * Look at the first element in the stack without removing it.
      *
      * @return The object at the top of the stack.
+     * @throws EmptyStackException If the stack is not initialized.
      */
-    public double peek() {
+    public double peek() throws EmptyStackException {
         if (topOfStack < 0) {
-            throw new NullPointerException();
+            throw new EmptyStackException();
         }
         return numberStack[topOfStack];
     }

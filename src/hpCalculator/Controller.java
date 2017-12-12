@@ -7,10 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 
-import java.util.Arrays;
-
 public class Controller {
-
     private HPCalculator hpCalculator = new HPCalculator();
 
     /**
