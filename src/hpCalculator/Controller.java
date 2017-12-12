@@ -12,7 +12,17 @@ import java.util.Arrays;
 public class Controller {
 
     private HPCalculator hpCalculator = new HPCalculator();
-    private boolean enter, operation;
+
+    /**
+     * To determine if we should replace top or not. Changes to 'true' when enter is pressed and 'false' when numbers
+     * is pressed.
+     */
+    private boolean isEnterPressed;
+    /**
+     * To determine if we should enter more digits and replace top. Changes to 'true' when operation is pressed and
+     * 'false' when numbers is pressed.
+     */
+    private boolean isOperationPressed;
 
     @FXML
     private TextField stackAtFirstPlace;
@@ -27,23 +37,30 @@ public class Controller {
     private TextField stackAtFourthPlace;
 
     /**
-     * Handler for number and comma buttons.
+     * Handler for number buttons.
      *
      * @param event The event.
      */
     @FXML
     private void numberButtonHandler(ActionEvent event) {
         double input = Double.parseDouble(((Button) event.getSource()).getText());
-        if (stackAtFirstPlace.getText().equals("0.0") || enter) {
-            updateBoard(hpCalculator.processNumber(input, true));
-        } else if (!operation) {
-            stackAtFirstPlace.setText(String.valueOf(Double.parseDouble(stackAtFirstPlace.getText()) * 10 + input));
-            updateBoard(hpCalculator.processNumber(Double.parseDouble(stackAtFirstPlace.getText()), true));
-        } else {
-            updateBoard(hpCalculator.processNumber(input, false));
+        // If first value is 0 or we just have pressed enter and starts entering a new number, we want to replace the
+        // first number of the stack.
+        if (stackAtFirstPlace.getText().equals("0.0") || isEnterPressed) {
+            updateBoard(hpCalculator.insertNumber(input, true));
         }
-        operation = false;
-        enter = false;
+        // Check if operation has not been used. We do this after because if we do an operation and the hit enter we
+        // we want to replace with the new number.
+        else if (!isOperationPressed) {
+            stackAtFirstPlace.setText(String.valueOf(Double.parseDouble(stackAtFirstPlace.getText()) * 10 + input));
+            updateBoard(hpCalculator.insertNumber(Double.parseDouble(stackAtFirstPlace.getText()), true));
+        }
+        // Else we just push.
+        else {
+            updateBoard(hpCalculator.insertNumber(input, false));
+        }
+        isOperationPressed = false;
+        isEnterPressed = false;
     }
 
     /**
@@ -58,48 +75,47 @@ public class Controller {
         try {
             switch (input) {
                 case "ENTER":
-                    values = hpCalculator.processNumber(Double.parseDouble(stackAtFirstPlace.getText()), false);
-                    enter = true;
+                    values = hpCalculator.insertNumber(Double.parseDouble(stackAtFirstPlace.getText()), false);
+                    isEnterPressed = true;
                     break;
                 case "+":
                     values = hpCalculator.processOperation(Operations.PLUS);
-                    operation = true;
+                    isOperationPressed = true;
                     break;
                 case "-":
                     values = hpCalculator.processOperation(Operations.MINUS);
-                    operation = true;
+                    isOperationPressed = true;
                     break;
                 case "*":
                     values = hpCalculator.processOperation(Operations.TIMES);
-                    operation = true;
+                    isOperationPressed = true;
                     break;
                 case "/":
                     values = hpCalculator.processOperation(Operations.DIVIDES);
-                    operation = true;
+                    isOperationPressed = true;
                     break;
                 case "CSTK":
                     values = hpCalculator.processOperation(Operations.CLEARSTACK);
-                    operation = true;
+                    isOperationPressed = true;
                     break;
                 case "CHS":
                     values = hpCalculator.processOperation(Operations.CHS);
-                    operation = true;
+                    isOperationPressed = true;
                     break;
                 case "CLX":
                     values = hpCalculator.processOperation(Operations.CLEAR);
                     break;
                 default:
-                    throw new Error("Operation does not exist.");
+                    throw new IllegalArgumentException("Operation does not exist.");
             }
             updateBoard(values);
-        } catch (Error e) {
+        } catch (IllegalArgumentException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).showAndWait();
         }
-
     }
 
     /**
-     * Update text fields.
+     * Update text fields that show the stack's contents.
      *
      * @param values The new values.
      */

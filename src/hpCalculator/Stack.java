@@ -119,6 +119,7 @@ public class Stack {
      * @return The formatted stack.
      */
     public double[] getStackInOrder() {
+        // If stack is empty (the pointer is less than 0), return the empty array.
         if (topOfStack < 0) return numberStack;
         double[] formattedList = new double[numberStack.length];
         int oldArrayPointer = topOfStack;

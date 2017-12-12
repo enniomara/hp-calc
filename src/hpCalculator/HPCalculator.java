@@ -9,39 +9,40 @@ public class HPCalculator {
     }
 
     /**
-     * Process for number input. Pushing the number input to the array and also poping a value if need.
+     * Process for number number. Pushing the number number to the array and also poping a value if need.
      *
-     * @param input      Input as a double.
-     * @param replaceTop If the top should be replaced.
-     * @return The array of number in double.
+     * @param number     Number as a double.
+     * @param replaceTop Whether the top element of the stack should be replaced by the number passed in.
+     * @return The stack's content in array form.
      */
-    public double[] processNumber(double input, boolean replaceTop) {
-        calculatorStack.push(input, replaceTop);
+    public double[] insertNumber(double number, boolean replaceTop) {
+        calculatorStack.push(number, replaceTop);
         return calculatorStack.getStackInOrder();
     }
 
     /**
      * Precess for operation input.
      *
-     * @param operation The operation input.
+     * @param operation The stack's content in array form.
      * @return Returns new array of values.
      */
     public double[] processOperation(Operations operation) {
-        double y;
+        double temporaryNumber;
         switch (operation) {
             case PLUS:
                 calculatorStack.push(calculatorStack.pop() + calculatorStack.pop());
                 break;
             case MINUS:
-                y = calculatorStack.pop();
-                calculatorStack.push(calculatorStack.pop() - y);
+                temporaryNumber = calculatorStack.pop();
+                calculatorStack.push(calculatorStack.pop() - temporaryNumber);
                 break;
             case TIMES:
                 calculatorStack.push(calculatorStack.pop() * calculatorStack.pop());
                 break;
             case DIVIDES:
-                y = calculatorStack.pop();
-                calculatorStack.push(calculatorStack.pop() / y);
+                temporaryNumber = calculatorStack.pop();
+                if (temporaryNumber == 0) throw new IllegalArgumentException("Can't divide by 0");
+                calculatorStack.push(calculatorStack.pop() / temporaryNumber);
                 break;
             case CLEARSTACK:
                 calculatorStack.empty();
@@ -53,7 +54,7 @@ public class HPCalculator {
                 calculatorStack.push(0.0, true);
                 break;
             default:
-                throw new Error("Unknown operation: " + operation);
+                throw new IllegalArgumentException("Unknown operation: " + operation);
         }
         return calculatorStack.getStackInOrder();
     }
