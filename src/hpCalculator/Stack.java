@@ -9,6 +9,9 @@ public class Stack {
      */
     private int topOfStack = -1;
 
+    /**
+     * @param size The size that the stack should have.
+     */
     public Stack(int size) {
         numberStack = new double[size];
     }
